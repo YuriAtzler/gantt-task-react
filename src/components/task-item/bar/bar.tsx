@@ -42,22 +42,24 @@ export const Bar: React.FC<TaskItemProps> = ({
           <g>
             {/* left */}
             <BarDateHandle
-              x={task.x1 + 1}
+              x={task.x1 - 25}
               y={task.y + 1}
-              width={task.handleWidth}
+              width={28}
               height={handleHeight}
-              barCornerRadius={task.barCornerRadius}
+              position="left"
+              arrowColor={task.styles.barArrowColor}
               onMouseDown={e => {
                 onEventStart("start", task, e);
               }}
             />
             {/* right */}
             <BarDateHandle
-              x={task.x2 - task.handleWidth - 1}
+              x={task.x2 - task.handleWidth + 5}
               y={task.y + 1}
-              width={task.handleWidth}
+              width={28}
               height={handleHeight}
-              barCornerRadius={task.barCornerRadius}
+              position="right"
+              arrowColor={task.styles.barArrowColor}
               onMouseDown={e => {
                 onEventStart("end", task, e);
               }}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Task, ViewMode, Gantt } from "gantt-task-react";
+import { Task, ViewMode, Gantt, StylingOption } from "gantt-task-react";
 import { ViewSwitcher } from "./components/view-switcher";
 import { getStartEndDateForProject, initTasks } from "./helper";
 import "gantt-task-react/dist/index.css";
@@ -17,6 +17,10 @@ const App = () => {
   } else if (view === ViewMode.Week) {
     columnWidth = 250;
   }
+
+  const style: StylingOption = {
+    barArrowColor: "#ff0000",
+  };
 
   const handleTaskChange = (task: Task) => {
     console.log("On date change Id:" + task.id);
@@ -76,6 +80,7 @@ const App = () => {
       />
       <h3>Gantt With Unlimited Height</h3>
       <Gantt
+        {...style}
         tasks={tasks}
         viewMode={view}
         onDateChange={handleTaskChange}

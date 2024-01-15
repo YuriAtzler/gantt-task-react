@@ -72,6 +72,9 @@ export function initTasks() {
       dependencies: ["Task 2"],
       project: "ProjectSample",
       displayOrder: 6,
+      styles: {
+        barArrowColor: "#ff00ff",
+      },
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 15),

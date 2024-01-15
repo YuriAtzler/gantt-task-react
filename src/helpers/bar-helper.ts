@@ -15,6 +15,7 @@ export const convertToBarTasks = (
   barProgressSelectedColor: string,
   barBackgroundColor: string,
   barBackgroundSelectedColor: string,
+  barArrowColor: string,
   projectProgressColor: string,
   projectProgressSelectedColor: string,
   projectBackgroundColor: string,
@@ -37,6 +38,7 @@ export const convertToBarTasks = (
       barProgressSelectedColor,
       barBackgroundColor,
       barBackgroundSelectedColor,
+      barArrowColor,
       projectProgressColor,
       projectProgressSelectedColor,
       projectBackgroundColor,
@@ -75,6 +77,7 @@ const convertToBarTask = (
   barProgressSelectedColor: string,
   barBackgroundColor: string,
   barBackgroundSelectedColor: string,
+  barArrowColor: string,
   projectProgressColor: string,
   projectProgressSelectedColor: string,
   projectBackgroundColor: string,
@@ -112,7 +115,8 @@ const convertToBarTask = (
         projectProgressColor,
         projectProgressSelectedColor,
         projectBackgroundColor,
-        projectBackgroundSelectedColor
+        projectBackgroundSelectedColor,
+        barArrowColor
       );
       break;
     default:
@@ -129,7 +133,8 @@ const convertToBarTask = (
         barProgressColor,
         barProgressSelectedColor,
         barBackgroundColor,
-        barBackgroundSelectedColor
+        barBackgroundSelectedColor,
+        barArrowColor
       );
       break;
   }
@@ -149,7 +154,8 @@ const convertToBar = (
   barProgressColor: string,
   barProgressSelectedColor: string,
   barBackgroundColor: string,
-  barBackgroundSelectedColor: string
+  barBackgroundSelectedColor: string,
+  barArrowColor: string
 ): BarTask => {
   let x1: number;
   let x2: number;
@@ -180,6 +186,7 @@ const convertToBar = (
     backgroundSelectedColor: barBackgroundSelectedColor,
     progressColor: barProgressColor,
     progressSelectedColor: barProgressSelectedColor,
+    barArrowColor: barArrowColor,
     ...task.styles,
   };
   return {
@@ -224,6 +231,7 @@ const convertToMilestone = (
     backgroundSelectedColor: milestoneBackgroundSelectedColor,
     progressColor: "",
     progressSelectedColor: "",
+    barArrowColor: "",
     ...task.styles,
   };
   return {

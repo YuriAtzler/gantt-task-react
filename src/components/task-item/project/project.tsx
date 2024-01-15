@@ -38,8 +38,6 @@ export const Project: React.FC<TaskItemProps> = ({ task, isSelected }) => {
         width={projectWith}
         y={task.y}
         height={task.height / 2}
-        rx={task.barCornerRadius}
-        ry={task.barCornerRadius}
         className={styles.projectTop}
       />
     </g>
