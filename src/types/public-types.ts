@@ -10,7 +10,7 @@ export enum ViewMode {
   Year = "Year",
 }
 export type TaskType = "task" | "milestone" | "project";
-export interface Task {
+export interface Task<T = any> {
   id: string;
   type: TaskType;
   name: string;
@@ -31,6 +31,13 @@ export interface Task {
   dependencies?: string[];
   hideChildren?: boolean;
   displayOrder?: number;
+  genericData?: T;
+  tag?: {
+    color: string;
+    name: string;
+    value?: number | string;
+    category?: number | string;
+  };
 }
 
 export interface EventOption {
