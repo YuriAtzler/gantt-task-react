@@ -75,6 +75,10 @@ export function initTasks() {
       styles: {
         barArrowColor: "#ff00ff",
       },
+      tag: {
+        color: "#f70505",
+        name: "teste",
+      },
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 15),
@@ -86,6 +90,10 @@ export function initTasks() {
       dependencies: ["Task 4"],
       project: "ProjectSample",
       displayOrder: 7,
+      tag: {
+        color: "#f70505",
+        name: "teste",
+      },
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 18),
@@ -95,6 +103,10 @@ export function initTasks() {
       progress: 0,
       isDisabled: true,
       type: "task",
+      tag: {
+        color: "#f70505",
+        name: "teste",
+      },
     },
   ];
   return tasks;
