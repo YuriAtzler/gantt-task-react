@@ -19,26 +19,18 @@ export const Project: React.FC<TaskItemProps> = ({ task, isSelected }) => {
         width={projectWith}
         y={task.y}
         height={task.height}
-        rx={task.barCornerRadius}
-        ry={task.barCornerRadius}
-        className={styles.projectBackground}
+        ry={5}
+        rx={5}
+        className={styles.projectTop}
       />
       <rect
         x={task.progressX}
         width={task.progressWidth}
         y={task.y}
         height={task.height}
-        ry={task.barCornerRadius}
-        rx={task.barCornerRadius}
+        ry={5}
+        rx={5}
         fill={processColor}
-      />
-      <rect
-        fill={barColor}
-        x={task.x1}
-        width={projectWith}
-        y={task.y}
-        height={task.height - 5}
-        className={styles.projectTop}
       />
     </g>
   );
