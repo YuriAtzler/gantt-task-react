@@ -81,7 +81,7 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
        * -> tag
        */}
 
-      {tag && (
+      {tag && tag.name && tag.color && (
         <g>
           <rect
             x={x}
