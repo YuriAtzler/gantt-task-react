@@ -82,6 +82,10 @@ export const TaskItem: React.FC<TaskItemProps> = props => {
 
   return (
     <g
+      onContextMenu={event => {
+        event.preventDefault();
+        onEventStart("contextMenu", task, event);
+      }}
       onKeyDown={e => {
         switch (e.key) {
           case "Delete": {

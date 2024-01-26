@@ -53,6 +53,7 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
   onDateChange,
   onProgressChange,
   onDoubleClick,
+  onContextMenu,
   onClick,
   onDelete,
 }) => {
@@ -237,6 +238,8 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
       !!onDoubleClick && onDoubleClick(task);
     } else if (action === "click") {
       !!onClick && onClick(task);
+    } else if (action === "contextMenu") {
+      !!onContextMenu && onContextMenu(task);
     }
     // Change task event start
     else if (action === "move") {

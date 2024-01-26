@@ -1,5 +1,5 @@
 import React from "react";
-import { Task, ViewMode, Gantt, StylingOption } from "simple-react-chart-gantt";
+import { Task, ViewMode, Gantt } from "simple-react-chart-gantt";
 import { ViewSwitcher } from "./components/view-switcher";
 import { getStartEndDateForProject, initTasks } from "./helper";
 import "simple-react-chart-gantt/dist/index.css";
@@ -17,10 +17,6 @@ const App = () => {
   } else if (view === ViewMode.Week) {
     columnWidth = 250;
   }
-
-  const style: StylingOption = {
-    barArrowColor: "#ff0000",
-  };
 
   const handleTaskChange = (task: Task) => {
     console.log("On date change Id:" + task.id);
@@ -71,6 +67,10 @@ const App = () => {
     console.log("On expander click Id:" + task.id);
   };
 
+  const handleContextMenu = (task: Task) => {
+    console.log(task);
+  };
+
   return (
     <div className="Wrapper">
       <ViewSwitcher
@@ -80,9 +80,9 @@ const App = () => {
       />
       <h3>Gantt With Unlimited Height</h3>
       <Gantt
-        {...style}
         tasks={tasks}
         viewMode={view}
+        onContextMenu={handleContextMenu}
         onDateChange={handleTaskChange}
         onDelete={handleTaskDelete}
         onProgressChange={handleProgressChange}
