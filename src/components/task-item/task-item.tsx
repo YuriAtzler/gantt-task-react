@@ -83,7 +83,6 @@ export const TaskItem: React.FC<TaskItemProps> = props => {
   return (
     <g
       onContextMenu={event => {
-        event.preventDefault();
         onEventStart("contextMenu", task, event);
       }}
       onKeyDown={e => {
