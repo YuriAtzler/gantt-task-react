@@ -108,7 +108,7 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
       {tag && tag.name && tag.color && (
         <g>
           <rect
-            x={x + width - 5}
+            x={x + width - 10}
             width={10}
             y={y}
             ry={4}
@@ -119,7 +119,7 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
             }}
           />
           <rect
-            x={x + width - 5}
+            x={x + width - 10}
             width={5}
             y={y}
             height={height}
