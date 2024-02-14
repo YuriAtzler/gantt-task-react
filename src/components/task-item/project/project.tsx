@@ -12,7 +12,7 @@ export const Project: React.FC<TaskItemProps> = ({ task, isSelected }) => {
   const projectWith = task.x2 - task.x1;
 
   return (
-    <g tabIndex={0} className={styles.projectWrapper}>
+    <g id={task.id} tabIndex={0} className={styles.projectWrapper}>
       <rect
         fill={barColor}
         x={task.x1}
