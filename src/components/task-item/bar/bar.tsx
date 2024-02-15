@@ -19,6 +19,7 @@ export const Bar: React.FC<TaskItemProps> = ({
     task.y,
     task.height
   );
+
   const handleHeight = task.height - 2;
   return (
     <g id={task.id} className={styles.barWrapper} tabIndex={0}>
@@ -46,7 +47,7 @@ export const Bar: React.FC<TaskItemProps> = ({
         <rect
           x={task.finalX1}
           width={
-            task.finalX2 - task.finalX1 < 15 ? 15 : task.finalX2 - task.finalX1
+            task.finalX2 - task.finalX1 < 20 ? 20 : task.finalX2 - task.finalX1
           }
           y={task.y + task.height * 0.125}
           height={task.height * 0.75}

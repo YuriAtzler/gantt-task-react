@@ -59,20 +59,39 @@ export const Tooltip: React.FC<TooltipProps> = ({
           newRelatedY += rowHeight;
         }
       } else {
-        newRelatedX = task.x2 + arrowIndent * 1.5 + taskListWidth - scrollX;
-        const tooltipLeftmostPoint = tooltipWidth + newRelatedX;
-        const fullChartWidth = taskListWidth + svgContainerWidth;
-        if (tooltipLeftmostPoint > fullChartWidth) {
+        if (task.finalX1 && task.finalX2) {
           newRelatedX =
-            task.x1 +
-            taskListWidth -
-            arrowIndent * 1.5 -
-            scrollX -
-            tooltipWidth;
-        }
-        if (newRelatedX < taskListWidth) {
-          newRelatedX = svgContainerWidth + taskListWidth - tooltipWidth;
-          newRelatedY += rowHeight;
+            task.finalX2 + arrowIndent * 1.5 + taskListWidth - scrollX;
+          const tooltipLeftmostPoint = tooltipWidth + newRelatedX;
+          const fullChartWidth = taskListWidth + svgContainerWidth;
+          if (tooltipLeftmostPoint > fullChartWidth) {
+            newRelatedX =
+              task.x1 +
+              taskListWidth -
+              arrowIndent * 1.5 -
+              scrollX -
+              tooltipWidth;
+          }
+          if (newRelatedX < taskListWidth) {
+            newRelatedX = svgContainerWidth + taskListWidth - tooltipWidth;
+            newRelatedY += rowHeight;
+          }
+        } else {
+          newRelatedX = task.x2 + arrowIndent * 1.5 + taskListWidth - scrollX;
+          const tooltipLeftmostPoint = tooltipWidth + newRelatedX;
+          const fullChartWidth = taskListWidth + svgContainerWidth;
+          if (tooltipLeftmostPoint > fullChartWidth) {
+            newRelatedX =
+              task.x1 +
+              taskListWidth -
+              arrowIndent * 1.5 -
+              scrollX -
+              tooltipWidth;
+          }
+          if (newRelatedX < taskListWidth) {
+            newRelatedX = svgContainerWidth + taskListWidth - tooltipWidth;
+            newRelatedY += rowHeight;
+          }
         }
       }
 

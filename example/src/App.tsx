@@ -92,6 +92,7 @@ const App = () => {
         onExpanderClick={handleExpanderClick}
         listCellWidth={isChecked ? "155px" : ""}
         columnWidth={columnWidth}
+        rowHeight={60}
       />
       <h3>Gantt With Limited Height</h3>
       <Gantt
