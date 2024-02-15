@@ -16,6 +16,7 @@ export const convertToBarTasks = (
   barBackgroundColor: string,
   barBackgroundSelectedColor: string,
   barArrowColor: string,
+  barFinalExecutionColor: string,
   projectProgressColor: string,
   projectProgressSelectedColor: string,
   projectBackgroundColor: string,
@@ -39,6 +40,7 @@ export const convertToBarTasks = (
       barBackgroundColor,
       barBackgroundSelectedColor,
       barArrowColor,
+      barFinalExecutionColor,
       projectProgressColor,
       projectProgressSelectedColor,
       projectBackgroundColor,
@@ -78,6 +80,7 @@ const convertToBarTask = (
   barBackgroundColor: string,
   barBackgroundSelectedColor: string,
   barArrowColor: string,
+  barFinalExecutionColor: string,
   projectProgressColor: string,
   projectProgressSelectedColor: string,
   projectBackgroundColor: string,
@@ -116,7 +119,8 @@ const convertToBarTask = (
         projectProgressSelectedColor,
         projectBackgroundColor,
         projectBackgroundSelectedColor,
-        barArrowColor
+        barArrowColor,
+        barFinalExecutionColor
       );
       break;
     default:
@@ -134,7 +138,8 @@ const convertToBarTask = (
         barProgressSelectedColor,
         barBackgroundColor,
         barBackgroundSelectedColor,
-        barArrowColor
+        barArrowColor,
+        barFinalExecutionColor
       );
       break;
   }
@@ -155,7 +160,8 @@ const convertToBar = (
   barProgressSelectedColor: string,
   barBackgroundColor: string,
   barBackgroundSelectedColor: string,
-  barArrowColor: string
+  barArrowColor: string,
+  barFinalExecutionColor: string
 ): BarTask => {
   let x1: number;
   let x2: number;
@@ -193,6 +199,7 @@ const convertToBar = (
     progressColor: barProgressColor,
     progressSelectedColor: barProgressSelectedColor,
     barArrowColor: barArrowColor,
+    barFinalExecutionColor: barFinalExecutionColor,
     ...task.styles,
   };
   return {
@@ -240,6 +247,7 @@ const convertToMilestone = (
     progressColor: "",
     progressSelectedColor: "",
     barArrowColor: "",
+    barFinalExecutionColor: "",
     ...task.styles,
   };
   return {

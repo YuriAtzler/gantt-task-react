@@ -27,7 +27,13 @@ export function initTasks() {
         currentDate.getMonth(),
         1
       ),
-      finalEnd: new Date(currentDate.getFullYear(), currentDate.getMonth(), 2),
+      finalEnd: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        1,
+        1,
+        1
+      ),
       name: "Idea",
       id: "Task 0",
       progress: 45,
@@ -51,6 +57,9 @@ export function initTasks() {
       type: "task",
       project: "ProjectSample",
       displayOrder: 3,
+      styles: {
+        barFinalExecutionColor: "#f70505",
+      },
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 4),

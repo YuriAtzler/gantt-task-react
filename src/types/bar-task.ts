@@ -20,6 +20,7 @@ export interface BarTask extends Task {
     progressColor: string;
     progressSelectedColor: string;
     barArrowColor: string;
+    barFinalExecutionColor: string;
   };
 }
 
