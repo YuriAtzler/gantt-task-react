@@ -16,6 +16,8 @@ export interface Task<T = any> {
   name: string;
   start: Date;
   end: Date;
+  finalStart?: Date;
+  finalEnd?: Date;
   /**
    * From 0 to 100
    */

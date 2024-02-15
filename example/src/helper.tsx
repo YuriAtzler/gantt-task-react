@@ -22,6 +22,12 @@ export function initTasks() {
         12,
         28
       ),
+      finalStart: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        1
+      ),
+      finalEnd: new Date(currentDate.getFullYear(), currentDate.getMonth(), 2),
       name: "Idea",
       id: "Task 0",
       progress: 45,
@@ -32,6 +38,12 @@ export function initTasks() {
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 2),
       end: new Date(currentDate.getFullYear(), currentDate.getMonth(), 4, 0, 0),
+      finalEnd: new Date(currentDate.getFullYear(), currentDate.getMonth(), 5),
+      finalStart: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        1
+      ),
       name: "Research",
       id: "Task 1",
       progress: 25,

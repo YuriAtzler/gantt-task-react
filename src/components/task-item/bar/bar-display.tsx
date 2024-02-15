@@ -4,6 +4,7 @@ import style from "./bar.module.css";
 type BarDisplayProps = {
   x: number;
   y: number;
+
   width: number;
   height: number;
   isSelected: boolean;
@@ -28,6 +29,7 @@ type BarDisplayProps = {
 export const BarDisplay: React.FC<BarDisplayProps> = ({
   x,
   y,
+
   width,
   height,
   isSelected,

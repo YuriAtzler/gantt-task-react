@@ -159,12 +159,18 @@ const convertToBar = (
 ): BarTask => {
   let x1: number;
   let x2: number;
+  let finalX1: number = 0;
+  let finalX2: number = 0;
   if (rtl) {
     x2 = taskXCoordinateRTL(task.start, dates, columnWidth);
     x1 = taskXCoordinateRTL(task.end, dates, columnWidth);
   } else {
     x1 = taskXCoordinate(task.start, dates, columnWidth);
     x2 = taskXCoordinate(task.end, dates, columnWidth);
+    if (task.finalEnd && task.finalStart) {
+      finalX1 = taskXCoordinate(task.finalStart, dates, columnWidth);
+      finalX2 = taskXCoordinate(task.finalEnd, dates, columnWidth);
+    }
   }
   let typeInternal: TaskTypeInternal = task.type;
   if (typeInternal === "task" && x2 - x1 < handleWidth * 2) {
@@ -194,6 +200,8 @@ const convertToBar = (
     typeInternal,
     x1,
     x2,
+    finalX1,
+    finalX2,
     y,
     index,
     progressX,
