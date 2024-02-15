@@ -47,13 +47,14 @@ export const Bar: React.FC<TaskItemProps> = ({
         <rect
           x={task.finalX1}
           width={
-            task.finalX2 - task.finalX1 < 20 ? 20 : task.finalX2 - task.finalX1
+            task.finalX2 - task.finalX1 < 15 ? 15 : task.finalX2 - task.finalX1
           }
-          y={task.y + task.height * 0.125}
-          height={task.height * 0.75}
+          y={task.y}
+          height={task.height}
           ry={5}
           rx={5}
           fill={task.styles.barFinalExecutionColor}
+          style={{ strokeWidth: 0 }}
         />
       )}
 

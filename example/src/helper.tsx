@@ -15,21 +15,11 @@ export function initTasks() {
     },
 
     {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 2),
-      end: new Date(currentDate.getFullYear(), currentDate.getMonth(), 4, 0, 0),
-      finalEnd: new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        2,
-        12
-      ),
-      finalStart: new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        1,
-        12
-      ),
-      name: "Research",
+      start: new Date(2024, 1, 5),
+      end: new Date(2024, 1, 10),
+      finalEnd: new Date(2024, 1, 1),
+      finalStart: new Date(2024, 0, 29),
+      name: "Teste",
       id: "Task 1",
       progress: 0,
       dependencies: ["Task 0"],
@@ -39,7 +29,6 @@ export function initTasks() {
       styles: {
         barFinalExecutionColor: "#f70505",
       },
-      isDisabled: true,
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 2),
