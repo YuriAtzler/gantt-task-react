@@ -26,6 +26,7 @@ export interface Task<T = any> {
     progressColor?: string;
     progressSelectedColor?: string;
     barArrowColor?: string;
+    barRealEndColor?: string;
   };
   isDisabled?: boolean;
   project?: string;
@@ -33,6 +34,8 @@ export interface Task<T = any> {
   hideChildren?: boolean;
   displayOrder?: number;
   genericData?: T;
+  realStart?: Date;
+  realEnd?: Date;
   tag?: {
     color: string;
     name: string;
@@ -119,6 +122,7 @@ export interface StylingOption {
   projectBackgroundColor?: string;
   projectBackgroundSelectedColor?: string;
   barArrowColor?: string;
+  barRealEndColor?: string;
   milestoneBackgroundColor?: string;
   milestoneBackgroundSelectedColor?: string;
   arrowColor?: string;

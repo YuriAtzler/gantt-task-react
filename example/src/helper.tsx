@@ -28,6 +28,17 @@ export function initTasks() {
       type: "task",
       project: "ProjectSample",
       displayOrder: 2,
+      styles: {
+        barRealEndColor: "#ff5",
+      },
+      realEnd: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        3,
+        12,
+        28
+      ),
+      realStart: new Date(currentDate.getFullYear(), 1, 4),
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 2),

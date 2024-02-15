@@ -1,5 +1,4 @@
 import React from "react";
-import style from "./bar.module.css";
 
 type BarDisplayProps = {
   x: number;
@@ -11,6 +10,8 @@ type BarDisplayProps = {
   progressX: number;
   progressWidth: number;
   barCornerRadius: number;
+  realX?: number;
+  realWidth?: number;
   tag?: {
     color: string;
     name: string;
@@ -22,12 +23,15 @@ type BarDisplayProps = {
     backgroundSelectedColor: string;
     progressColor: string;
     progressSelectedColor: string;
+    barRealEndColor: string;
   };
   onMouseDown: (event: React.MouseEvent<SVGPolygonElement, MouseEvent>) => void;
 };
 export const BarDisplay: React.FC<BarDisplayProps> = ({
   x,
   y,
+  realWidth,
+  realX,
   width,
   height,
   isSelected,
@@ -49,6 +53,23 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
     <g onMouseDown={onMouseDown}>
       {/**
        * @Description
+       * -> final execution
+       */}
+      {realWidth && realX && (
+        <rect
+          x={realX}
+          width={realWidth}
+          y={y}
+          height={height}
+          ry={5}
+          rx={5}
+          fill={styles.barRealEndColor}
+          className={styles.barRealEndColor}
+        />
+      )}
+
+      {/**
+       * @Description
        * -> background
        */}
       <rect
@@ -59,7 +80,6 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
         ry={5}
         rx={5}
         fill={getBarColor()}
-        className={style.barBackground}
       />
 
       {/**

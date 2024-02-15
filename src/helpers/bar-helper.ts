@@ -16,6 +16,7 @@ export const convertToBarTasks = (
   barBackgroundColor: string,
   barBackgroundSelectedColor: string,
   barArrowColor: string,
+  barRealEndColor: string,
   projectProgressColor: string,
   projectProgressSelectedColor: string,
   projectBackgroundColor: string,
@@ -39,6 +40,7 @@ export const convertToBarTasks = (
       barBackgroundColor,
       barBackgroundSelectedColor,
       barArrowColor,
+      barRealEndColor,
       projectProgressColor,
       projectProgressSelectedColor,
       projectBackgroundColor,
@@ -78,6 +80,7 @@ const convertToBarTask = (
   barBackgroundColor: string,
   barBackgroundSelectedColor: string,
   barArrowColor: string,
+  barRealEndColor: string,
   projectProgressColor: string,
   projectProgressSelectedColor: string,
   projectBackgroundColor: string,
@@ -116,7 +119,8 @@ const convertToBarTask = (
         projectProgressSelectedColor,
         projectBackgroundColor,
         projectBackgroundSelectedColor,
-        barArrowColor
+        barArrowColor,
+        barRealEndColor
       );
       break;
     default:
@@ -134,7 +138,8 @@ const convertToBarTask = (
         barProgressSelectedColor,
         barBackgroundColor,
         barBackgroundSelectedColor,
-        barArrowColor
+        barArrowColor,
+        barRealEndColor
       );
       break;
   }
@@ -155,16 +160,23 @@ const convertToBar = (
   barProgressSelectedColor: string,
   barBackgroundColor: string,
   barBackgroundSelectedColor: string,
-  barArrowColor: string
+  barArrowColor: string,
+  barRealEndColor: string
 ): BarTask => {
   let x1: number;
   let x2: number;
+  let realX1: number = 0;
+  let realX2: number = 0;
   if (rtl) {
     x2 = taskXCoordinateRTL(task.start, dates, columnWidth);
     x1 = taskXCoordinateRTL(task.end, dates, columnWidth);
   } else {
     x1 = taskXCoordinate(task.start, dates, columnWidth);
     x2 = taskXCoordinate(task.end, dates, columnWidth);
+    if (task.realStart && task.realEnd) {
+      realX1 = taskXCoordinate(task.realStart, dates, columnWidth);
+      realX2 = taskXCoordinate(task.realEnd, dates, columnWidth);
+    }
   }
   let typeInternal: TaskTypeInternal = task.type;
   if (typeInternal === "task" && x2 - x1 < handleWidth * 2) {
@@ -187,6 +199,7 @@ const convertToBar = (
     progressColor: barProgressColor,
     progressSelectedColor: barProgressSelectedColor,
     barArrowColor: barArrowColor,
+    barRealEndColor: barRealEndColor,
     ...task.styles,
   };
   return {
@@ -194,6 +207,8 @@ const convertToBar = (
     typeInternal,
     x1,
     x2,
+    realX1,
+    realX2,
     y,
     index,
     progressX,
@@ -232,6 +247,7 @@ const convertToMilestone = (
     progressColor: "",
     progressSelectedColor: "",
     barArrowColor: "",
+    barRealEndColor: "",
     ...task.styles,
   };
   return {
