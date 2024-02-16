@@ -1,10 +1,10 @@
 import React from "react";
 import style from "./bar.module.css";
+import { Tag } from "./tag";
 
 type BarDisplayProps = {
   x: number;
   y: number;
-
   width: number;
   height: number;
   isSelected: boolean;
@@ -12,6 +12,7 @@ type BarDisplayProps = {
   progressX: number;
   progressWidth: number;
   barCornerRadius: number;
+  isGhost: boolean;
   tag?: {
     color: string;
     name: string;
@@ -29,7 +30,7 @@ type BarDisplayProps = {
 export const BarDisplay: React.FC<BarDisplayProps> = ({
   x,
   y,
-
+  isGhost,
   width,
   height,
   isSelected,
@@ -82,53 +83,8 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
        * @Description
        * -> tag
        */}
-      {tag && tag.name && tag.color && (
-        <g>
-          <rect
-            x={x}
-            width={10}
-            y={y}
-            ry={4}
-            rx={4}
-            height={height}
-            style={{
-              fill: tag.color,
-            }}
-          />
-          <rect
-            x={x + 5}
-            width={5}
-            y={y}
-            height={height}
-            style={{
-              fill: tag.color,
-            }}
-          />
-        </g>
-      )}
-      {tag && tag.name && tag.color && (
-        <g>
-          <rect
-            x={x + width - 10}
-            width={10}
-            y={y}
-            ry={4}
-            rx={4}
-            height={height}
-            style={{
-              fill: tag.color,
-            }}
-          />
-          <rect
-            x={x + width - 10}
-            width={5}
-            y={y}
-            height={height}
-            style={{
-              fill: tag.color,
-            }}
-          />
-        </g>
+      {!isGhost && tag?.name && (
+        <Tag height={height} tag={tag} width={width} x={x} y={y} />
       )}
     </g>
   );

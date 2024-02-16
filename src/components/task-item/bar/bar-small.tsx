@@ -24,6 +24,7 @@ export const BarSmall: React.FC<TaskItemProps> = ({
         y={task.y}
         width={task.x2 - task.x1}
         height={task.height}
+        isGhost={false}
         progressX={task.progressX}
         progressWidth={task.progressWidth}
         barCornerRadius={task.barCornerRadius}

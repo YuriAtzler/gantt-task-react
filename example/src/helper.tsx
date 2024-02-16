@@ -26,6 +26,10 @@ export function initTasks() {
       type: "task",
       project: "ProjectSample",
       displayOrder: 3,
+      tag: {
+        color: "#ff5",
+        name: "Teste",
+      },
       styles: {
         barFinalExecutionColor: "#f70505",
       },
@@ -40,8 +44,9 @@ export function initTasks() {
       type: "task",
       project: "ProjectSample",
       displayOrder: 3,
-      styles: {
-        barFinalExecutionColor: "#f70505",
+      tag: {
+        color: "#ff5",
+        name: "Teste",
       },
     },
   ];

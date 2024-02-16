@@ -5,6 +5,7 @@ import { BarDateHandle } from "./bar-date-handle";
 import { BarProgressHandle } from "./bar-progress-handle";
 import { TaskItemProps } from "../task-item";
 import styles from "./bar.module.css";
+import { Tag } from "./tag";
 
 export const Bar: React.FC<TaskItemProps> = ({
   task,
@@ -32,6 +33,7 @@ export const Bar: React.FC<TaskItemProps> = ({
           progressX={task.progressX}
           progressWidth={task.progressWidth}
           barCornerRadius={task.barCornerRadius}
+          isGhost={true}
           tag={task.tag}
           styles={task.styles}
           isSelected={isSelected}
@@ -50,6 +52,7 @@ export const Bar: React.FC<TaskItemProps> = ({
           progressX={task.progressX}
           progressWidth={task.progressWidth}
           barCornerRadius={task.barCornerRadius}
+          isGhost={false}
           tag={task.tag}
           styles={task.styles}
           isSelected={isSelected}
@@ -64,18 +67,36 @@ export const Bar: React.FC<TaskItemProps> = ({
        * -> Background final dates
        */}
       {task.finalX1 && task.finalX2 && (
-        <rect
-          x={task.finalX1}
-          width={
-            task.finalX2 - task.finalX1 < 15 ? 15 : task.finalX2 - task.finalX1
-          }
-          y={task.y}
-          height={task.height}
-          ry={5}
-          rx={5}
-          fill={task.styles.barFinalExecutionColor}
-          style={{ strokeWidth: 0 }}
-        />
+        <g>
+          <rect
+            x={task.finalX1}
+            width={
+              task.finalX2 - task.finalX1 < 15
+                ? 15
+                : task.finalX2 - task.finalX1
+            }
+            y={task.y}
+            height={task.height}
+            ry={5}
+            rx={5}
+            fill={task.styles.barFinalExecutionColor}
+            style={{ strokeWidth: 0 }}
+          />
+
+          {task.tag?.name && (
+            <Tag
+              tag={task.tag}
+              x={task.finalX1}
+              height={task.height}
+              width={
+                task.finalX2 - task.finalX1 < 15
+                  ? 15
+                  : task.finalX2 - task.finalX1
+              }
+              y={task.y}
+            />
+          )}
+        </g>
       )}
 
       <g className="handleGroup">
