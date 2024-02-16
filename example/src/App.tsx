@@ -6,6 +6,7 @@ import "simple-react-chart-gantt/dist/index.css";
 
 // Init
 const App = () => {
+  const [showPlanned, setShowPlanned] = React.useState(true);
   const [view, setView] = React.useState<ViewMode>(ViewMode.Day);
   const [tasks, setTasks] = React.useState<Task[]>(initTasks());
   const [isChecked, setIsChecked] = React.useState(true);
@@ -17,6 +18,8 @@ const App = () => {
   } else if (view === ViewMode.Week) {
     columnWidth = 250;
   }
+
+  const handleShowPlanned = () => setShowPlanned(!showPlanned);
 
   const handleTaskChange = (task: Task) => {
     console.log("On date change Id:" + task.id);
@@ -73,6 +76,7 @@ const App = () => {
 
   return (
     <div className="Wrapper">
+      <button onClick={handleShowPlanned}>Mostrar planejado</button>
       <ViewSwitcher
         onViewModeChange={viewMode => setView(viewMode)}
         onViewListChange={setIsChecked}
@@ -93,6 +97,7 @@ const App = () => {
         listCellWidth={isChecked ? "155px" : ""}
         columnWidth={columnWidth}
         rowHeight={60}
+        showsPlanned={showPlanned}
       />
       <h3>Gantt With Limited Height</h3>
       <Gantt
@@ -108,6 +113,7 @@ const App = () => {
         listCellWidth={isChecked ? "155px" : ""}
         ganttHeight={300}
         columnWidth={columnWidth}
+        showsPlanned={showPlanned}
       />
     </div>
   );

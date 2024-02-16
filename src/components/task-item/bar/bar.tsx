@@ -23,21 +23,41 @@ export const Bar: React.FC<TaskItemProps> = ({
   const handleHeight = task.height - 2;
   return (
     <g id={task.id} className={styles.barWrapper} tabIndex={0}>
-      <BarDisplay
-        x={task.x1}
-        y={task.y}
-        width={task.x2 - task.x1}
-        height={task.height}
-        progressX={task.progressX}
-        progressWidth={task.progressWidth}
-        barCornerRadius={task.barCornerRadius}
-        tag={task.tag}
-        styles={task.styles}
-        isSelected={isSelected}
-        onMouseDown={e => {
-          isDateChangeable && onEventStart("move", task, e);
-        }}
-      />
+      {task.showsPlanned && task.finalX1 && task.finalX2 && (
+        <BarDisplay
+          x={task.x1}
+          y={task.y}
+          width={task.x2 - task.x1}
+          height={task.height}
+          progressX={task.progressX}
+          progressWidth={task.progressWidth}
+          barCornerRadius={task.barCornerRadius}
+          tag={task.tag}
+          styles={task.styles}
+          isSelected={isSelected}
+          onMouseDown={e => {
+            isDateChangeable && onEventStart("move", task, e);
+          }}
+        />
+      )}
+
+      {!task.finalX1 && !task.finalX2 && (
+        <BarDisplay
+          x={task.x1}
+          y={task.y}
+          width={task.x2 - task.x1}
+          height={task.height}
+          progressX={task.progressX}
+          progressWidth={task.progressWidth}
+          barCornerRadius={task.barCornerRadius}
+          tag={task.tag}
+          styles={task.styles}
+          isSelected={isSelected}
+          onMouseDown={e => {
+            isDateChangeable && onEventStart("move", task, e);
+          }}
+        />
+      )}
 
       {/**
        * @Description

@@ -18,6 +18,7 @@ export interface Task<T = any> {
   end: Date;
   finalStart?: Date;
   finalEnd?: Date;
+  showsPlanned?: boolean;
   /**
    * From 0 to 100
    */
@@ -113,6 +114,7 @@ export interface StylingOption {
    * From 0 to 100
    */
   barFill?: number;
+  showsPlanned?: boolean;
   barProgressColor?: string;
   barProgressSelectedColor?: string;
   barBackgroundColor?: string;
