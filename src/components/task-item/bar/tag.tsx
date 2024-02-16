@@ -41,7 +41,7 @@ export function Tag({ height, tag, width, x, y }: TagProps) {
 
       <g>
         <rect
-          x={x + width - 10}
+          x={x + width - 9}
           width={10}
           y={y}
           ry={4}
@@ -52,7 +52,7 @@ export function Tag({ height, tag, width, x, y }: TagProps) {
           }}
         />
         <rect
-          x={x + width - 10}
+          x={x + width - 9}
           width={5}
           y={y}
           height={height}
