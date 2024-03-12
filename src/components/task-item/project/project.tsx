@@ -52,7 +52,7 @@ export const Project: React.FC<TaskItemProps> = ({ task, isSelected }) => {
         </svg>
       )}
 
-      {projectWith > 50 && (
+      {projectWith > 75 && (
         <svg
           height={task.height * 1.15}
           width={projectWith}
