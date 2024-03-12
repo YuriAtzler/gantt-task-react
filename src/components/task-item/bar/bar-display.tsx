@@ -56,11 +56,11 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
        */}
       <rect
         x={x}
-        width={width < 36 ? 36 : width}
+        width={width < 16 ? 16 : width}
         y={y}
         height={height}
-        ry={width < 36 ? 0 : 5}
-        rx={width < 36 ? 0 : 5}
+        ry={5}
+        rx={5}
         fill={getBarColor()}
         className={style.barBackground}
       />
@@ -69,15 +69,17 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
        * @Description
        * -> progress
        */}
-      <rect
-        x={progressX}
-        width={progressWidth}
-        y={y}
-        height={height}
-        ry={width < 36 ? 0 : 5}
-        rx={width < 36 ? 0 : 5}
-        fill={getProcessColor()}
-      />
+      {width > 16 && (
+        <rect
+          x={progressX}
+          width={progressWidth}
+          y={y}
+          height={height}
+          ry={5}
+          rx={5}
+          fill={getProcessColor()}
+        />
+      )}
 
       {/**
        * @Description

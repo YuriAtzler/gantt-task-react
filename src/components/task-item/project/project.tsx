@@ -16,23 +16,25 @@ export const Project: React.FC<TaskItemProps> = ({ task, isSelected }) => {
       <rect
         fill={barColor}
         x={task.x1}
-        width={projectWith < 36 ? 36 : projectWith}
+        width={projectWith < 16 ? 16 : projectWith}
         y={task.y + task.height / 4}
         height={task.height / 2}
-        ry={projectWith < 36 ? 0 : 5}
-        rx={projectWith < 36 ? 0 : 5}
+        ry={5}
+        rx={5}
         className={styles.projectTop}
       />
 
-      <rect
-        x={task.progressX}
-        width={task.progressWidth}
-        y={task.y}
-        height={task.height}
-        ry={projectWith < 36 ? 0 : 5}
-        rx={projectWith < 36 ? 0 : 5}
-        fill={processColor}
-      />
+      {projectWith > 16 && (
+        <rect
+          x={task.progressX}
+          width={task.progressWidth}
+          y={task.y}
+          height={task.height}
+          ry={5}
+          rx={5}
+          fill={processColor}
+        />
+      )}
 
       {projectWith > 50 && (
         <svg
