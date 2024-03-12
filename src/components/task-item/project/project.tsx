@@ -17,7 +17,7 @@ export const Project: React.FC<TaskItemProps> = ({ task, isSelected }) => {
         fill={barColor}
         x={task.x1}
         width={projectWith}
-        y={task.y * 1.75}
+        y={task.y + task.height / 4}
         height={task.height / 2}
         ry={5}
         rx={5}
