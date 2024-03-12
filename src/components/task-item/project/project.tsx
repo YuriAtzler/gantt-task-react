@@ -16,11 +16,11 @@ export const Project: React.FC<TaskItemProps> = ({ task, isSelected }) => {
       <rect
         fill={barColor}
         x={task.x1}
-        width={projectWith}
+        width={projectWith < 36 ? 36 : projectWith}
         y={task.y + task.height / 4}
         height={task.height / 2}
-        ry={5}
-        rx={5}
+        ry={projectWith < 36 ? 0 : 5}
+        rx={projectWith < 36 ? 0 : 5}
         className={styles.projectTop}
       />
 
@@ -29,8 +29,8 @@ export const Project: React.FC<TaskItemProps> = ({ task, isSelected }) => {
         width={task.progressWidth}
         y={task.y}
         height={task.height}
-        ry={5}
-        rx={5}
+        ry={projectWith < 36 ? 0 : 5}
+        rx={projectWith < 36 ? 0 : 5}
         fill={processColor}
       />
 
