@@ -5,49 +5,19 @@ export function initTasks() {
   const tasks: Task[] = [
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
-      end: new Date(currentDate.getFullYear(), currentDate.getMonth(), 15),
-      name: "Some Project",
+      end: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        2,
+        12,
+        0
+      ),
+      name: "teste",
       id: "ProjectSample",
       progress: 0,
       type: "project",
       hideChildren: false,
       displayOrder: 1,
-    },
-
-    {
-      start: new Date(2024, 1, 5),
-      end: new Date(2024, 1, 10),
-      finalEnd: new Date(2024, 1, 1),
-      finalStart: new Date(2024, 0, 29),
-      name: "Teste",
-      id: "Task 1",
-      progress: 0,
-      dependencies: ["Task 0"],
-      type: "task",
-      project: "ProjectSample",
-      displayOrder: 3,
-      tag: {
-        color: "#ff5",
-        name: "Teste",
-      },
-      styles: {
-        barFinalExecutionColor: "#f70505",
-      },
-    },
-    {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 2),
-      end: new Date(currentDate.getFullYear(), currentDate.getMonth(), 4, 0, 0),
-      name: "Research",
-      id: "Task 2",
-      progress: 0,
-      dependencies: ["Task 0"],
-      type: "task",
-      project: "ProjectSample",
-      displayOrder: 3,
-      tag: {
-        color: "#ff5",
-        name: "Teste",
-      },
     },
   ];
   return tasks;
