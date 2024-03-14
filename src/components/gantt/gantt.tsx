@@ -463,6 +463,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   return (
     <div>
       <div
+        id="gantt-wrapper-id"
         className={styles.wrapper}
         onKeyDown={handleKeyDown}
         tabIndex={0}
