@@ -5,6 +5,7 @@ import { BarDateHandle } from "./bar-date-handle";
 import { BarProgressHandle } from "./bar-progress-handle";
 import { TaskItemProps } from "../task-item";
 import styles from "./bar.module.css";
+import { Tag } from "./tag";
 
 export const Bar: React.FC<TaskItemProps> = ({
   task,
@@ -19,26 +20,84 @@ export const Bar: React.FC<TaskItemProps> = ({
     task.y,
     task.height
   );
+
   const handleHeight = task.height - 2;
   return (
     <g id={task.id} className={styles.barWrapper} tabIndex={0}>
-      <BarDisplay
-        x={task.x1}
-        y={task.y}
-        realX={task.realX1}
-        realWidth={task.realX1 && task.realX2 && task.realX2 - task.realX1}
-        width={task.x2 - task.x1}
-        height={task.height}
-        progressX={task.progressX}
-        progressWidth={task.progressWidth}
-        barCornerRadius={task.barCornerRadius}
-        tag={task.tag}
-        styles={task.styles}
-        isSelected={isSelected}
-        onMouseDown={e => {
-          isDateChangeable && onEventStart("move", task, e);
-        }}
-      />
+      {task.showsPlanned && task.finalX1 && task.finalX2 && (
+        <BarDisplay
+          x={task.x1}
+          y={task.y}
+          width={task.x2 - task.x1}
+          height={task.height}
+          progressX={task.progressX}
+          progressWidth={task.progressWidth}
+          barCornerRadius={task.barCornerRadius}
+          isGhost={true}
+          tag={task.tag}
+          styles={task.styles}
+          isSelected={isSelected}
+          onMouseDown={e => {
+            isDateChangeable && onEventStart("move", task, e);
+          }}
+        />
+      )}
+
+      {!task.finalX1 && !task.finalX2 && (
+        <BarDisplay
+          x={task.x1}
+          y={task.y}
+          width={task.x2 - task.x1}
+          height={task.height}
+          progressX={task.progressX}
+          progressWidth={task.progressWidth}
+          barCornerRadius={task.barCornerRadius}
+          isGhost={false}
+          tag={task.tag}
+          styles={task.styles}
+          isSelected={isSelected}
+          onMouseDown={e => {
+            isDateChangeable && onEventStart("move", task, e);
+          }}
+        />
+      )}
+
+      {/**
+       * @Description
+       * -> Background final dates
+       */}
+      {task.finalX1 && task.finalX2 && (
+        <g>
+          <rect
+            x={task.finalX1}
+            width={
+              task.finalX2 - task.finalX1 < 15
+                ? 15
+                : task.finalX2 - task.finalX1
+            }
+            y={task.y}
+            height={task.height}
+            ry={5}
+            rx={5}
+            fill={task.styles.barFinalExecutionColor}
+            style={{ strokeWidth: 0 }}
+          />
+
+          {task.tag?.name && (
+            <Tag
+              tag={task.tag}
+              x={task.finalX1}
+              height={task.height}
+              width={
+                task.finalX2 - task.finalX1 < 15
+                  ? 15
+                  : task.finalX2 - task.finalX1
+              }
+              y={task.y}
+            />
+          )}
+        </g>
+      )}
 
       <g className="handleGroup">
         {isDateChangeable && (

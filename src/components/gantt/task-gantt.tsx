@@ -52,6 +52,7 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
         <Calendar {...calendarProps} />
       </svg>
       <div
+        id="gantt-wrapper-id"
         ref={horizontalContainerRef}
         className={styles.horizontalContainer}
         style={

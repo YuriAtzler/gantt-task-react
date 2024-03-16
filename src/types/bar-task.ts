@@ -5,8 +5,8 @@ export interface BarTask extends Task {
   typeInternal: TaskTypeInternal;
   x1: number;
   x2: number;
-  realX1?: number;
-  realX2?: number;
+  finalX1?: number;
+  finalX2?: number;
   y: number;
   height: number;
   progressX: number;
@@ -20,7 +20,7 @@ export interface BarTask extends Task {
     progressColor: string;
     progressSelectedColor: string;
     barArrowColor: string;
-    barRealEndColor: string;
+    barFinalExecutionColor: string;
   };
 }
 

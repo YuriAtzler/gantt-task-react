@@ -1,4 +1,6 @@
 import React from "react";
+import style from "./bar.module.css";
+import { Tag } from "./tag";
 
 type BarDisplayProps = {
   x: number;
@@ -10,8 +12,7 @@ type BarDisplayProps = {
   progressX: number;
   progressWidth: number;
   barCornerRadius: number;
-  realX?: number;
-  realWidth?: number;
+  isGhost: boolean;
   tag?: {
     color: string;
     name: string;
@@ -30,8 +31,7 @@ type BarDisplayProps = {
 export const BarDisplay: React.FC<BarDisplayProps> = ({
   x,
   y,
-  realWidth,
-  realX,
+  isGhost,
   width,
   height,
   isSelected,
@@ -74,7 +74,7 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
        */}
       <rect
         x={x}
-        width={width}
+        width={width < 16 ? 16 : width}
         y={y}
         height={height}
         ry={5}
@@ -86,67 +86,24 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
        * @Description
        * -> progress
        */}
-      <rect
-        x={progressX}
-        width={progressWidth}
-        y={y}
-        height={height}
-        ry={5}
-        rx={5}
-        fill={getProcessColor()}
-      />
+      {width > 16 && (
+        <rect
+          x={progressX}
+          width={progressWidth}
+          y={y}
+          height={height}
+          ry={5}
+          rx={5}
+          fill={getProcessColor()}
+        />
+      )}
 
       {/**
        * @Description
        * -> tag
        */}
-      {tag && tag.name && tag.color && (
-        <g>
-          <rect
-            x={x}
-            width={10}
-            y={y}
-            ry={4}
-            rx={4}
-            height={height}
-            style={{
-              fill: tag.color,
-            }}
-          />
-          <rect
-            x={x + 5}
-            width={5}
-            y={y}
-            height={height}
-            style={{
-              fill: tag.color,
-            }}
-          />
-        </g>
-      )}
-      {tag && tag.name && tag.color && (
-        <g>
-          <rect
-            x={x + width - 10}
-            width={10}
-            y={y}
-            ry={4}
-            rx={4}
-            height={height}
-            style={{
-              fill: tag.color,
-            }}
-          />
-          <rect
-            x={x + width - 10}
-            width={5}
-            y={y}
-            height={height}
-            style={{
-              fill: tag.color,
-            }}
-          />
-        </g>
+      {!isGhost && tag?.name && (
+        <Tag height={height} tag={tag} width={width} x={x} y={y} />
       )}
     </g>
   );

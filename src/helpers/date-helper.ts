@@ -39,6 +39,7 @@ export const addToDate = (
     date.getSeconds() + (scale === "second" ? quantity : 0),
     date.getMilliseconds() + (scale === "millisecond" ? quantity : 0)
   );
+
   return newDate;
 };
 
@@ -76,19 +77,26 @@ export const ganttDateRange = (
 ) => {
   let newStartDate: Date = tasks[0].start;
   let newEndDate: Date = tasks[0].start;
+
   for (const task of tasks) {
-    if (task.start < newStartDate) {
-      newStartDate = task.start;
-    }
-    if (task.end > newEndDate) {
-      newEndDate = task.end;
-    }
+    let start = task.start;
+    let end = task.end;
+
+    if (task.finalStart)
+      start = task.finalStart < task.start ? task.finalStart : task.start;
+
+    if (task.finalEnd)
+      end = task.finalEnd > task.end ? task.finalEnd : task.end;
+
+    if (start < newStartDate) newStartDate = start;
+
+    if (end > newEndDate) newEndDate = end;
   }
   switch (viewMode) {
     case ViewMode.Year:
-      newStartDate = addToDate(newStartDate, -1, "year");
+      newStartDate = addToDate(newStartDate, -2, "year");
       newStartDate = startOfDate(newStartDate, "year");
-      newEndDate = addToDate(newEndDate, 1, "year");
+      newEndDate = addToDate(newEndDate, 2, "year");
       newEndDate = startOfDate(newEndDate, "year");
       break;
     case ViewMode.QuarterYear:
@@ -98,7 +106,7 @@ export const ganttDateRange = (
       newEndDate = startOfDate(newEndDate, "year");
       break;
     case ViewMode.Month:
-      newStartDate = addToDate(newStartDate, -1 * preStepsCount, "month");
+      newStartDate = addToDate(newStartDate, -2 * preStepsCount, "month");
       newStartDate = startOfDate(newStartDate, "month");
       newEndDate = addToDate(newEndDate, 1, "year");
       newEndDate = startOfDate(newEndDate, "year");
@@ -115,7 +123,7 @@ export const ganttDateRange = (
       break;
     case ViewMode.Day:
       newStartDate = startOfDate(newStartDate, "day");
-      newStartDate = addToDate(newStartDate, -1 * preStepsCount, "day");
+      newStartDate = addToDate(newStartDate, -2 * preStepsCount, "day");
       newEndDate = startOfDate(newEndDate, "day");
       newEndDate = addToDate(newEndDate, 19, "day");
       break;
@@ -133,9 +141,9 @@ export const ganttDateRange = (
       break;
     case ViewMode.Hour:
       newStartDate = startOfDate(newStartDate, "hour");
-      newStartDate = addToDate(newStartDate, -1 * preStepsCount, "hour");
-      newEndDate = startOfDate(newEndDate, "day");
-      newEndDate = addToDate(newEndDate, 1, "day");
+      newStartDate = addToDate(newStartDate, -6 * preStepsCount, "hour");
+      newEndDate = startOfDate(newEndDate, "hour");
+      newEndDate = addToDate(newEndDate, 32, "hour");
       break;
   }
   return [newStartDate, newEndDate];

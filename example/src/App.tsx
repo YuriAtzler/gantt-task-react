@@ -6,6 +6,7 @@ import "simple-react-chart-gantt/dist/index.css";
 
 // Init
 const App = () => {
+  const [showPlanned, setShowPlanned] = React.useState(true);
   const [view, setView] = React.useState<ViewMode>(ViewMode.Day);
   const [tasks, setTasks] = React.useState<Task[]>(initTasks());
   const [isChecked, setIsChecked] = React.useState(true);
@@ -17,6 +18,8 @@ const App = () => {
   } else if (view === ViewMode.Week) {
     columnWidth = 250;
   }
+
+  const handleShowPlanned = () => setShowPlanned(!showPlanned);
 
   const handleTaskChange = (task: Task) => {
     console.log("On date change Id:" + task.id);
@@ -73,12 +76,12 @@ const App = () => {
 
   return (
     <div className="Wrapper">
+      <button onClick={handleShowPlanned}>Mostrar planejado</button>
       <ViewSwitcher
         onViewModeChange={viewMode => setView(viewMode)}
         onViewListChange={setIsChecked}
         isChecked={isChecked}
       />
-      <h3>Gantt With Unlimited Height</h3>
       <Gantt
         tasks={tasks}
         viewMode={view}
@@ -92,21 +95,8 @@ const App = () => {
         onExpanderClick={handleExpanderClick}
         listCellWidth={isChecked ? "155px" : ""}
         columnWidth={columnWidth}
-      />
-      <h3>Gantt With Limited Height</h3>
-      <Gantt
-        tasks={tasks}
-        viewMode={view}
-        onDateChange={handleTaskChange}
-        onDelete={handleTaskDelete}
-        onProgressChange={handleProgressChange}
-        onDoubleClick={handleDblClick}
-        onClick={handleClick}
-        onSelect={handleSelect}
-        onExpanderClick={handleExpanderClick}
-        listCellWidth={isChecked ? "155px" : ""}
-        ganttHeight={300}
-        columnWidth={columnWidth}
+        rowHeight={60}
+        showsPlanned={showPlanned}
       />
     </div>
   );

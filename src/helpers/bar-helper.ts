@@ -11,12 +11,13 @@ export const convertToBarTasks = (
   barCornerRadius: number,
   handleWidth: number,
   rtl: boolean,
+  showsPlanned: boolean,
   barProgressColor: string,
   barProgressSelectedColor: string,
   barBackgroundColor: string,
   barBackgroundSelectedColor: string,
   barArrowColor: string,
-  barRealEndColor: string,
+  barFinalExecutionColor: string,
   projectProgressColor: string,
   projectProgressSelectedColor: string,
   projectBackgroundColor: string,
@@ -35,12 +36,13 @@ export const convertToBarTasks = (
       barCornerRadius,
       handleWidth,
       rtl,
+      showsPlanned,
       barProgressColor,
       barProgressSelectedColor,
       barBackgroundColor,
       barBackgroundSelectedColor,
       barArrowColor,
-      barRealEndColor,
+      barFinalExecutionColor,
       projectProgressColor,
       projectProgressSelectedColor,
       projectBackgroundColor,
@@ -75,12 +77,13 @@ const convertToBarTask = (
   barCornerRadius: number,
   handleWidth: number,
   rtl: boolean,
+  showsPlanned: boolean,
   barProgressColor: string,
   barProgressSelectedColor: string,
   barBackgroundColor: string,
   barBackgroundSelectedColor: string,
   barArrowColor: string,
-  barRealEndColor: string,
+  barFinalExecutionColor: string,
   projectProgressColor: string,
   projectProgressSelectedColor: string,
   projectBackgroundColor: string,
@@ -115,12 +118,13 @@ const convertToBarTask = (
         barCornerRadius,
         handleWidth,
         rtl,
+        showsPlanned,
         projectProgressColor,
         projectProgressSelectedColor,
         projectBackgroundColor,
         projectBackgroundSelectedColor,
         barArrowColor,
-        barRealEndColor
+        barFinalExecutionColor
       );
       break;
     default:
@@ -134,12 +138,13 @@ const convertToBarTask = (
         barCornerRadius,
         handleWidth,
         rtl,
+        showsPlanned,
         barProgressColor,
         barProgressSelectedColor,
         barBackgroundColor,
         barBackgroundSelectedColor,
         barArrowColor,
-        barRealEndColor
+        barFinalExecutionColor
       );
       break;
   }
@@ -156,26 +161,27 @@ const convertToBar = (
   barCornerRadius: number,
   handleWidth: number,
   rtl: boolean,
+  showsPlanned: boolean,
   barProgressColor: string,
   barProgressSelectedColor: string,
   barBackgroundColor: string,
   barBackgroundSelectedColor: string,
   barArrowColor: string,
-  barRealEndColor: string
+  barFinalExecutionColor: string
 ): BarTask => {
   let x1: number;
   let x2: number;
-  let realX1: number = 0;
-  let realX2: number = 0;
+  let finalX1: number = 0;
+  let finalX2: number = 0;
   if (rtl) {
     x2 = taskXCoordinateRTL(task.start, dates, columnWidth);
     x1 = taskXCoordinateRTL(task.end, dates, columnWidth);
   } else {
     x1 = taskXCoordinate(task.start, dates, columnWidth);
     x2 = taskXCoordinate(task.end, dates, columnWidth);
-    if (task.realStart && task.realEnd) {
-      realX1 = taskXCoordinate(task.realStart, dates, columnWidth);
-      realX2 = taskXCoordinate(task.realEnd, dates, columnWidth);
+    if (task.finalEnd && task.finalStart) {
+      finalX1 = taskXCoordinate(task.finalStart, dates, columnWidth);
+      finalX2 = taskXCoordinate(task.finalEnd, dates, columnWidth);
     }
   }
   let typeInternal: TaskTypeInternal = task.type;
@@ -199,16 +205,17 @@ const convertToBar = (
     progressColor: barProgressColor,
     progressSelectedColor: barProgressSelectedColor,
     barArrowColor: barArrowColor,
-    barRealEndColor: barRealEndColor,
+    barFinalExecutionColor: barFinalExecutionColor,
     ...task.styles,
   };
   return {
     ...task,
+    showsPlanned,
     typeInternal,
     x1,
     x2,
-    realX1,
-    realX2,
+    finalX1,
+    finalX2,
     y,
     index,
     progressX,
@@ -247,7 +254,7 @@ const convertToMilestone = (
     progressColor: "",
     progressSelectedColor: "",
     barArrowColor: "",
-    barRealEndColor: "",
+    barFinalExecutionColor: "",
     ...task.styles,
   };
   return {
@@ -272,6 +279,8 @@ const convertToMilestone = (
 
 const taskXCoordinate = (xDate: Date, dates: Date[], columnWidth: number) => {
   const index = dates.findIndex(d => d.getTime() >= xDate.getTime()) - 1;
+
+  if (index < 0) return 0;
 
   const remainderMillis = xDate.getTime() - dates[index].getTime();
   const percentOfInterval =
