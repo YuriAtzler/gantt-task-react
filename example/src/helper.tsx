@@ -51,6 +51,98 @@ export function initTasks() {
       hideChildren: false,
       displayOrder: 1,
     },
+    {
+      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
+      end: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        2,
+        12,
+        0
+      ),
+      name: "teste",
+      id: "ProjectSample",
+      progress: 0,
+      type: "task",
+      hideChildren: false,
+      displayOrder: 1,
+    },
+    {
+      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
+      end: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        2,
+        12,
+        0
+      ),
+      name: "teste",
+      id: "ProjectSample",
+      progress: 0,
+      type: "task",
+      hideChildren: false,
+      displayOrder: 1,
+    },
+    {
+      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
+      end: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        2,
+        12,
+        0
+      ),
+      finalEnd: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        1,
+        12,
+        0
+      ),
+      finalStart: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        1
+      ),
+      name: "teste",
+      id: "ProjectSample",
+      progress: 100,
+      type: "task",
+      hideChildren: false,
+      displayOrder: 1,
+    },
+    {
+      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
+      end: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        2,
+        12,
+        0
+      ),
+      name: "teste",
+      id: "ProjectSample",
+      progress: 0,
+      type: "project",
+      hideChildren: false,
+      displayOrder: 1,
+    },
+    {
+      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
+      end: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        2,
+        12,
+        0
+      ),
+      name: "teste",
+      id: "ProjectSample",
+      progress: 0,
+      type: "project",
+      hideChildren: false,
+      displayOrder: 1,
+    },
   ];
   return tasks;
 }

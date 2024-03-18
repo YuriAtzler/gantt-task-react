@@ -24,6 +24,7 @@ type BarDisplayProps = {
     backgroundSelectedColor: string;
     progressColor: string;
     progressSelectedColor: string;
+    opacity?: number;
   };
   onMouseDown: (event: React.MouseEvent<SVGPolygonElement, MouseEvent>) => void;
 };
@@ -61,6 +62,7 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
         height={height}
         ry={5}
         rx={5}
+        style={{ opacity: styles.opacity || 1 }}
         fill={getBarColor()}
         className={style.barBackground}
       />
@@ -77,6 +79,7 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
           height={height}
           ry={5}
           rx={5}
+          style={{ opacity: styles.opacity || 1 }}
           fill={getProcessColor()}
         />
       )}
