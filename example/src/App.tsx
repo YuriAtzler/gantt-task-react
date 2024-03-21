@@ -97,6 +97,7 @@ const App = () => {
         columnWidth={columnWidth}
         rowHeight={60}
         showsPlanned={showPlanned}
+        weekendColor={"#97979714"}
       />
     </div>
   );
