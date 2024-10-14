@@ -8,140 +8,106 @@ export function initTasks() {
       end: new Date(
         currentDate.getFullYear(),
         currentDate.getMonth(),
-        2,
-        12,
-        0
+        2
       ),
       name: "teste",
-      id: "ProjectSample",
-      progress: 0,
-      type: "project",
+      id: "task1",
+      progress: 25,
+      type: "task",
       hideChildren: false,
       displayOrder: 1,
     },
     {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
+      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 2),
       end: new Date(
         currentDate.getFullYear(),
         currentDate.getMonth(),
-        2,
-        12,
-        0
+       4
       ),
       name: "teste",
-      id: "ProjectSample",
-      progress: 0,
-      type: "project",
-      hideChildren: false,
-      displayOrder: 1,
-    },
-    {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
-      end: new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        2,
-        12,
-        0
-      ),
-      name: "teste",
-      id: "ProjectSample",
-      progress: 0,
-      type: "project",
-      hideChildren: false,
-      displayOrder: 1,
-    },
-    {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
-      end: new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        2,
-        12,
-        0
-      ),
-      name: "teste",
-      id: "ProjectSample",
+      id: "task2",
       progress: 0,
       type: "task",
       hideChildren: false,
       displayOrder: 1,
     },
     {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
+      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 3),
       end: new Date(
         currentDate.getFullYear(),
         currentDate.getMonth(),
-        2,
-        12,
-        0
+        4
       ),
       name: "teste",
-      id: "ProjectSample",
-      progress: 0,
+      id: "task3",
+      progress: 35,
       type: "task",
       hideChildren: false,
-      displayOrder: 1,
     },
     {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
+      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 4),
       end: new Date(
         currentDate.getFullYear(),
         currentDate.getMonth(),
-        2,
-        12,
-        0
-      ),
-      finalEnd: new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        1,
-        12,
-        0
-      ),
-      finalStart: new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        1
+       7
       ),
       name: "teste",
-      id: "ProjectSample",
-      progress: 100,
+      id: "task4",
+      progress: 10,
       type: "task",
       hideChildren: false,
-      displayOrder: 1,
     },
     {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
+      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 5),
       end: new Date(
         currentDate.getFullYear(),
         currentDate.getMonth(),
-        2,
-        12,
-        0
+        6
       ),
       name: "teste",
-      id: "ProjectSample",
-      progress: 0,
-      type: "project",
+      id: "task5",
+      progress: 75,
+      type: "task",
       hideChildren: false,
-      displayOrder: 1,
     },
     {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
+      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 6),
       end: new Date(
         currentDate.getFullYear(),
         currentDate.getMonth(),
-        2,
-        12,
-        0
+       9
       ),
       name: "teste",
-      id: "ProjectSample",
-      progress: 0,
-      type: "project",
+      id: "task6",
+      progress: 50,
+      type: "task",
       hideChildren: false,
-      displayOrder: 1,
+    },
+    {
+      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 7),
+      end: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+       8
+      ),
+      name: "teste",
+      id: "task7",
+      progress: 45,
+      type: "task",
+      hideChildren: false,
+    },
+    {
+      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 8),
+      end: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+      10
+      ),
+      name: "teste",
+      id: "task9",
+      progress: 80,
+      type: "task",
+      hideChildren: false,
     },
   ];
   return tasks;
